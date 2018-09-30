@@ -1,0 +1,17 @@
+<div class="row text-white" style="margin-top : 128px">
+   <div  class="d-flex flex-row justify-content-center w-100">
+        <fa-icon class="mr-2 ml-2" [icon]="faCheck" 
+                                   [style.opacity]="tab == TodoListTab.COMPLETADO ? 1 : 0.5" 
+                                   style="font-size:2rem"
+                                   (click)="OnTabClick(TodoListTab.COMPLETADO)"></fa-icon>
+        <fa-icon class="mr-2 ml-2" [icon]="faCalendarAlt"
+                                   [style.opacity]="tab == TodoListTab.AHORA ? 1 : 0.5" 
+                                   style="font-size:2rem"
+                                   (click)="OnTabClick(TodoListTab.AHORA)"></fa-icon>
+        <fa-icon class="mr-2 ml-2" [icon]="faClock"
+                                   [style.opacity] ="tab == TodoListTab.AGENDAR ? 1: 0.5" 
+                                   style="font-size:2rem"
+                                   (click)="OnTabClick(TodoListTab.AGENDAR)"></fa-icon>
+   </div>
+   <div class="font-weight-bold text-center text-uppercase w-100">{{ tab }}</div>
+</div>
