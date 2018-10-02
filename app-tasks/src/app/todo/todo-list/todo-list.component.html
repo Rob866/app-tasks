@@ -1,4 +1,4 @@
-<div class="row text-white" style="margin-top : 128px">
+<div class="row text-white" style="margin-top : 128px; margin-bottom:1rem">
    <div  class="d-flex flex-row justify-content-center w-100">
         <fa-icon class="mr-2 ml-2" [icon]="faCheck" 
                                    [style.opacity]="tab == TodoListTab.COMPLETADO ? 1 : 0.5" 
@@ -9,9 +9,31 @@
                                    style="font-size:2rem"
                                    (click)="OnTabClick(TodoListTab.AHORA)"></fa-icon>
         <fa-icon class="mr-2 ml-2" [icon]="faClock"
-                                   [style.opacity] ="tab == TodoListTab.AGENDAR ? 1: 0.5" 
+                                   [style.opacity] ="tab == TodoListTab.AGENDA ? 1: 0.5" 
                                    style="font-size:2rem"
-                                   (click)="OnTabClick(TodoListTab.AGENDAR)"></fa-icon>
+                                   (click)="OnTabClick(TodoListTab.AGENDA)"></fa-icon>
    </div>
    <div class="font-weight-bold text-center text-uppercase w-100">{{ tab }}</div>
+</div>
+
+
+<div class="col">
+    <div *ngFor="let task of tasksByTab[tab]; let i=index"  class="row bg-white position-relative p-3">
+ 
+   <fa-icon class="mr-2 "
+            [icon]="task.Completado ? faCheckCircle: faCircle"
+            [ngClass]="{ 'text-success' : task.Completado}"
+            style="font-size :1.5rem"></fa-icon>  
+    
+   <span style="margin-top : 5px">{{ task.Nombre }} <br/>
+    <small style="margin-top : 5px"
+            class="text-muted">
+            {{ task.Agenda | date }} | {{ task.Duracion *60 | time}}
+    </small>
+   </span>
+
+        <span *ngIf=" i < tasksByTab[tab].length -1"
+         class="position-absolute border-bottom" style="bottom:0; width: calc(100% - 2rem)">&nbsp;
+        </span>
+    </div>
 </div>
